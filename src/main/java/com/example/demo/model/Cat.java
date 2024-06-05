@@ -21,4 +21,6 @@ public class Cat {
     private String colors;
     private String description;
     private String image ;
+    protected String imageName;
+    protected String imagePath;
 }

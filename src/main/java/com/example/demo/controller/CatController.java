@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+
+import com.example.demo.dto.*;
 import com.example.demo.model.Cat;
-import com.example.demo.repositories.CatRepository;
+import com.example.demo.model.Dog;
+import com.example.demo.services.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,30 +13,29 @@ import java.util.List;
 @RestController
 @RequestMapping("/cats")
 public class CatController {
-    @Autowired
-    private CatRepository catRepository;
+ @Autowired
+ private CatService catService;
 
-    @GetMapping("")
-    public List<Cat> getAllCats(){return catRepository.findAll();}
-
-    @PostMapping("/create")
-    public Cat createCat(@RequestBody Cat cat){
-        return  catRepository.save(cat);
+    @GetMapping()
+    public List<Cat> getAllCat() {
+        return catService.getCat();
     }
 
-    @GetMapping("{id}")
-    public Cat getCatById(@PathVariable String  id){
-        return catRepository.findById(id).orElse(null);
+    @PostMapping("/update")
+    public ServiceResponse<?> addCat(@ModelAttribute CatWriteRequest request) {
+        return catService.addCat(request);
     }
 
-    @PutMapping("/{id}")
-    public Cat updateCat(@PathVariable String id, @RequestBody Cat cat) {
-        cat.setId(id);
-        return catRepository.save(cat);
+    @DeleteMapping("/delete")
+    public ServiceResponse<?> deleteCats(@RequestBody CatDeleteRequest request) {
+        ServiceResponse<?> response = catService.deleteCat(request);
+        return ServiceResponse.ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteCat(@PathVariable String id) {
-        catRepository.deleteById(id);
+    @GetMapping("/search/{name}")
+    public List<Cat> searchCatsByName(@PathVariable String name) {
+        return catService.searchCatByName(name);
     }
 }
+
+

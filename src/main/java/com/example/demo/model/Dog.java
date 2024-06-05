@@ -23,5 +23,6 @@ public class Dog {
     private String temperament ;
     private String colors;
     private String description;
-    private String image ;
+    protected String imageName;
+    protected String imagePath;
 }

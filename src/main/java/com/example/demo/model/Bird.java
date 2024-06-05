@@ -25,4 +25,6 @@ public class Bird {
     private String weight_kg;
     private String height_cm;
     private String image ;
+    protected String imageName;
+    protected String imagePath;
 }

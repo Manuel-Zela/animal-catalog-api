@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.*;
 import com.example.demo.model.Bird;
-import com.example.demo.repositories.BirdRepository;
+import com.example.demo.services.BirdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +12,28 @@ import java.util.List;
 @RequestMapping("/birds")
 public class BirdController {
     @Autowired
-    private BirdRepository birdRepository;
+    private BirdService birdService;
 
-    @GetMapping("")
-    public List<Bird> getAllBird(){return birdRepository.findAll();}
-
-    @PostMapping("/create")
-    public Bird createBird(@RequestBody Bird bird){
-        return  birdRepository.save(bird);
+    @GetMapping()
+    public List<Bird> getAllBird() {
+        return birdService.getBird();
     }
 
-    @GetMapping("{id}")
-    public Bird getBirdById(@PathVariable String  id){
-        return birdRepository.findById(id).orElse(null);
+    @PostMapping("/update")
+    public ServiceResponse<?> addBird(@ModelAttribute BirdWriteRequest request) {
+        return birdService.addBird(request);
     }
 
-    @PutMapping("/{id}")
-    public Bird updateBird(@PathVariable String id, @RequestBody Bird bird) {
-        bird.setId(id);
-        return birdRepository.save(bird);
+    @DeleteMapping("/delete")
+    public ServiceResponse<?> deleteBird(@RequestBody BirdDeleteRequest request) {
+        ServiceResponse<?> response = birdService.deleteBird(request);
+        return ServiceResponse.ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteBird(@PathVariable String id) {
-        birdRepository.deleteById(id);
+    @GetMapping("/search/{name}")
+    public List<Bird> searchCatsByName(@PathVariable String name) {
+        return birdService.searchBirdByName(name);
     }
 }
+
+

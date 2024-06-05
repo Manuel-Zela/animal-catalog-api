@@ -1,41 +1,42 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.DogDeleteRequest;
+import com.example.demo.dto.DogWriteRequest;
+import com.example.demo.dto.ServiceResponse;
 import com.example.demo.repositories.DogRepository;
 import com.example.demo.model.Dog;
+import com.example.demo.services.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/dog")
 public class DogController {
+
     @Autowired
-    private DogRepository dogRepository;
+    private DogService dogService;
 
-    @PostMapping("/create")
-    public Dog createDog(@RequestBody Dog dog) {
-        return dogRepository.save(dog);
-    }
 
-    @GetMapping
+    @GetMapping()
     public List<Dog> getAllDog() {
-        return dogRepository.findAll();
+        return dogService.getDogs();
     }
 
-    @GetMapping("/{id}")
-    public Dog getDogById(@PathVariable String id) {
-        return dogRepository.findById(id).orElse(null);
+    @PostMapping("/update")
+    public ServiceResponse<?> addDog(@ModelAttribute DogWriteRequest request) {
+        return dogService.addDog(request);
     }
 
-    @PutMapping("/{id}")
-    public Dog updateDog(@PathVariable String id, @RequestBody Dog dog) {
-        dog.setId(id);
-        return dogRepository.save(dog);
+    @DeleteMapping("/delete")
+    public ServiceResponse<?> deleteProduct(@RequestBody DogDeleteRequest request) {
+        ServiceResponse<?> response = dogService.deleteDog(request);
+        return ServiceResponse.ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteDog(@PathVariable String id) {
-        dogRepository.deleteById(id);
+    @GetMapping("/search/{name}")
+    public List<Dog> searchDogsByName(@PathVariable String name) {
+        return dogService.searchDogByName(name);
     }
 }
