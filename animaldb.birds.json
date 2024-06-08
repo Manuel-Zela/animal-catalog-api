@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "66643d3d0f146f751dabdbea"
+  },
+  "name": "Golden Eagle",
+  "species": "Aquila chrysaetos",
+  "family": "Accipitridae",
+  "place_of_found": "North America",
+  "diet": "",
+  "description": "The golden eagle is one of the best-known birds of prey in the Northern Hemisphere. It is a large, dark brown raptor with a wingspan of up to 2.3 meters.",
+  "weight_kg": "3.6-6.7",
+  "height_cm": "66-102",
+  "imageName": "premium_photo-1675714692342-01dfd2e6b6b5.avif",
+  "imagePath": "/images/birds/premium_photo-1675714692342-01dfd2e6b6b5.avif",
+  "_class": "com.example.demo.model.Bird"
+},
+{
+  "_id": {
+    "$oid": "66643d940f146f751dabdbeb"
+  },
+  "name": "Bald Eagle",
+  "species": "Haliaeetus leucocephalus",
+  "family": "Accipitridae",
+  "place_of_found": "North America.",
+  "diet": "",
+  "description": "The bald eagle is a bird of prey found in North America. It is the national bird and symbol of the United States of America.",
+  "weight_kg": "3-6.3",
+  "height_cm": "70-102",
+  "imageName": "photo-1444464666168-49d633b86797.avif",
+  "imagePath": "/images/birds/photo-1444464666168-49d633b86797.avif",
+  "_class": "com.example.demo.model.Bird"
+},
+{
+  "_id": {
+    "$oid": "66643eb40f146f751dabdbec"
+  },
+  "name": "Peregrine Falcon",
+  "species": "Falco peregrinus",
+  "family": "Falconidae",
+  "place_of_found": "Worldwide",
+  "diet": "",
+  "description": "The peregrine falcon is renowned for its speed, reaching over 320 km/h (200 mph) during its characteristic hunting stoop (high-speed dive).",
+  "weight_kg": "0.7-1.5",
+  "height_cm": "34-58",
+  "imageName": "istockphoto-1030966828-612x612.jpg",
+  "imagePath": "/images/birds/istockphoto-1030966828-612x612.jpg",
+  "_class": "com.example.demo.model.Bird"
+},
+{
+  "_id": {
+    "$oid": "66643efd0f146f751dabdbed"
+  },
+  "name": "Harpy Eagle",
+  "species": "Harpia harpyja",
+  "family": "Accipitridae",
+  "place_of_found": "Central and South America.",
+  "diet": "",
+  "description": "The harpy eagle is a powerful raptor and one of the largest and most powerful predatory birds. It has a distinctive feathered crown and a strong bill.",
+  "weight_kg": "6-9",
+  "height_cm": "86-107",
+  "imageName": "istockphoto-1395848270-612x612.jpg",
+  "imagePath": "/images/birds/istockphoto-1395848270-612x612.jpg",
+  "_class": "com.example.demo.model.Bird"
+},
+{
+  "_id": {
+    "$oid": "66643f400f146f751dabdbee"
+  },
+  "name": "Kingfisher",
+  "species": "Alcedo atthis (Common Kingfisher)",
+  "family": "Alcedinidae",
+  "place_of_found": "Europe, Asia, and North Africa",
+  "diet": "",
+  "description": "Kingfishers are small to medium-sized, brightly colored birds with short tails and long, sharp bills. They are known for their fishing skills and vibrant plumage.",
+  "weight_kg": "6-9",
+  "height_cm": "10-45",
+  "imageName": "istockphoto-1030966828-612x612 (1).jpg",
+  "imagePath": "/images/birds/istockphoto-1030966828-612x612 (1).jpg",
+  "_class": "com.example.demo.model.Bird"
+}]
