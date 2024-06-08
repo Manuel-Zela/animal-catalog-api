@@ -69,7 +69,7 @@ public class CatService {
             return ServiceResponse.ok();
         } catch (Exception e) {
             log.error("Error during save", e);
-            return ServiceResponse.error("Error during dog save!");
+            return ServiceResponse.error("Error during cats save!");
         }
     }
 

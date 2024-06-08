@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/cats")
 public class CatController {
  @Autowired
  private CatService catService;
 
-    @GetMapping()
+    @GetMapping("")
     public List<Cat> getAllCat() {
         return catService.getCat();
     }
