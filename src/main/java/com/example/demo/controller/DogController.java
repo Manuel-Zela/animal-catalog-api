@@ -39,4 +39,9 @@ public class DogController {
     public List<Dog> searchDogsByName(@PathVariable String name) {
         return dogService.searchDogByName(name);
     }
+
+    @GetMapping("/limit")
+    public List<Dog> getDogsLimit(@RequestParam(defaultValue = "10") int limit) {
+        return dogService.getDogsLimit(limit);
+    }
 }

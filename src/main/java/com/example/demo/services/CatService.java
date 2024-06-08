@@ -2,10 +2,12 @@ package com.example.demo.services;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.Cat;
+import com.example.demo.model.Dog;
 import com.example.demo.repositories.CatRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -82,12 +84,12 @@ public class CatService {
             return ServiceResponse.error("Id value should be provided!");
         }
 
-        Optional<Cat> dogOptional = catRepository.findById(request.getId());
-        if (dogOptional.isPresent()) {
-            catRepository.deleteById(dogOptional.get().getId());
+        Optional<Cat> catOptional = catRepository.findById(request.getId());
+        if (catOptional.isPresent()) {
+            catRepository.deleteById(catOptional.get().getId());
             return ServiceResponse.ok();
         } else {
-            return ServiceResponse.error("Dog not present in database");
+            return ServiceResponse.error("Cat not present in database");
         }
     }
 
@@ -115,5 +117,8 @@ public class CatService {
 
     public List<Cat> searchCatByName(String name) {
         return (List<Cat>) catRepository.findByName(name.toLowerCase());
+    }
+    public List<Cat> getCatLimit(int limit) {
+        return catRepository.findAll(PageRequest.of(0, limit)).getContent();
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.Bird;
+import com.example.demo.model.Dog;
 import com.example.demo.services.BirdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,11 @@ public class BirdController {
     @GetMapping("/search/{name}")
     public List<Bird> searchCatsByName(@PathVariable String name) {
         return birdService.searchBirdByName(name);
+    }
+
+    @GetMapping("/limit")
+    public List<Bird> getBirdLimit(@RequestParam(defaultValue = "10") int limit) {
+        return birdService.getBirdLimit(limit);
     }
 }
 

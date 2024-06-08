@@ -36,6 +36,11 @@ public class CatController {
     public List<Cat> searchCatsByName(@PathVariable String name) {
         return catService.searchCatByName(name);
     }
+
+    @GetMapping("/limit")
+    public List<Cat> getCatLimit(@RequestParam(defaultValue = "10") int limit) {
+        return catService.getCatLimit(limit);
+    }
 }
 
 

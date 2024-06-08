@@ -8,6 +8,7 @@ import com.example.demo.repositories.DogRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -124,5 +125,9 @@ public class DogService {
 
     public List<Dog> searchDogByName(String name) {
         return (List<Dog>) dogRepository.findByName(name.toLowerCase());
+    }
+
+    public List<Dog> getDogsLimit(int limit) {
+        return dogRepository.findAll(PageRequest.of(0, limit)).getContent();
     }
 }

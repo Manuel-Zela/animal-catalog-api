@@ -2,10 +2,12 @@ package com.example.demo.services;
 
 import com.example.demo.dto.*;
 import com.example.demo.model.Bird;
+import com.example.demo.model.Dog;
 import com.example.demo.repositories.BirdRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -89,12 +91,12 @@ public class BirdService {
             return ServiceResponse.error("Id value should be provided!");
         }
 
-        Optional<Bird> dogOptional = birdRepository.findById(request.getId());
-        if (dogOptional.isPresent()) {
-            birdRepository.deleteById(dogOptional.get().getId());
+        Optional<Bird> birdOptional = birdRepository.findById(request.getId());
+        if (birdOptional.isPresent()) {
+            birdRepository.deleteById(birdOptional.get().getId());
             return ServiceResponse.ok();
         } else {
-            return ServiceResponse.error("Dog not present in database");
+            return ServiceResponse.error("Bird not present in database");
         }
     }
 
@@ -122,5 +124,9 @@ public class BirdService {
 
     public List<Bird> searchBirdByName(String name) {
         return (List<Bird>) birdRepository.findByName(name.toLowerCase());
+    }
+
+    public List<Bird> getBirdLimit(int limit) {
+        return birdRepository.findAll(PageRequest.of(0, limit)).getContent();
     }
 }
