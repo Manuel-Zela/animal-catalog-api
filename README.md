@@ -12,8 +12,9 @@ To get started with the backend development environment, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/username/backend-repo.git
-   cd backend-repo
+   git clone https://github.com/username/animal-catalog-api.git
+   cd animal-catalog-api
+   
 Run the Application:
 
 Build and run the Spring Boot application:
